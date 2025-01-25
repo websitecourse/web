@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Science Quiz</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header>
+    <h1>Data Science Quiz</h1>
+</header>
+
+<div class="container">
+    <form id="quizForm">
+        <h2>Answer the following questions:</h2>
+
+        <div class="question">
+            <p>1. What is the primary goal of data science?</p>
+            <label><input type="radio" name="q1" value="To analyze data and make decisions" required> To analyze data and make decisions</label><br>
+            <label><input type="radio" name="q1" value="To create websites"> To create websites</label><br>
+        </div>
+
+        <div class="question">
+            <p>2. Which of the following is a popular programming language for data science?</p>
+            <label><input type="radio" name="q2" value="Python" required> Python</label><br>
+            <label><input type="radio" name="q2" value="HTML"> HTML</label><br>
+            <label><input type="radio" name="q2" value="CSS"> CSS</label><br>
+        </div>
+
+        <div class="question">
+            <p>3. What is the term for the process of cleaning data before analysis?</p>
+            <label><input type="radio" name="q3" value="Data wrangling" required> Data wrangling</label><br>
+            <label><input type="radio" name="q3" value="Data migration"> Data migration</label><br>
+        </div>
+
+        <div class="question">
+            <p>4. Which algorithm is commonly used for classification problems in machine learning?</p>
+            <label><input type="radio" name="q4" value="Logistic regression" required> Logistic regression</label><br>
+            <label><input type="radio" name="q4" value="Linear regression"> Linear regression</label><br>
+        </div>
+
+        <div class="question">
+            <p>5. What does the term "Big Data" refer to?</p>
+            <label><input type="radio" name="q5" value="Large and complex datasets" required> Large and complex datasets</label><br>
+            <label><input type="radio" name="q5" value="Data stored in small files"> Data stored in small files</label><br>
+        </div>
+
+        <div class="question">
+            <p>6. What is the function of a decision tree algorithm?</p>
+            <label><input type="radio" name="q6" value="To make predictions based on data" required> To make predictions based on data</label><br>
+            <label><input type="radio" name="q6" value="To clean data for analysis"> To clean data for analysis</label><br>
+        </div>
+
+        <div class="question">
+            <p>7. Which type of analysis is used to find patterns and relationships in large datasets?</p>
+            <label><input type="radio" name="q7" value="Exploratory Data Analysis (EDA)" required> Exploratory Data Analysis (EDA)</label><br>
+            <label><input type="radio" name="q7" value="Predictive Analysis"> Predictive Analysis</label><br>
+        </div>
+
+        <div class="question">
+            <p>8. Which of these is a data visualization tool commonly used in data science?</p>
+            <label><input type="radio" name="q8" value="Tableau" required> Tableau</label><br>
+            <label><input type="radio" name="q8" value="WordPress"> WordPress</label><br>
+        </div>
+
+        <div class="question">
+            <p>9. What is the purpose of the K-Means algorithm in data science?</p>
+            <label><input type="radio" name="q9" value="Clustering data into groups" required> Clustering data into groups</label><br>
+            <label><input type="radio" name="q9" value="Making predictions on future data"> Making predictions on future data</label><br>
+        </div>
+
+        <div class="question">
+            <p>10. Which library in Python is widely used for data manipulation and analysis?</p>
+            <label><input type="radio" name="q10" value="Pandas" required> Pandas</label><br>
+            <label><input type="radio" name="q10" value="Flask"> Flask</label><br>
+        </div>
+
+        <button type="submit">Submit Quiz</button>
+    </form>
+
+    <div id="result" style="display:none;">
+        <h2>Quiz Results</h2>
+        <p id="score"></p>
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2023 Online Courses. All rights reserved.</p>
+</footer>
+
+<script>
+    document.getElementById('quizForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent form submission
+
+        let score = 0;
+        const totalQuestions = 10;
+
+        // Correct answers for Data Science quiz
+        const answers = {
+            q1: "To analyze data and make decisions",
+            q2: "Python",
+            q3: "Data wrangling",
+            q4: "Logistic regression",
+            q5: "Large and complex datasets",
+            q6: "To make predictions based on data",
+            q7: "Exploratory Data Analysis (EDA)",
+            q8: "Tableau",
+            q9: "Clustering data into groups",
+            q10: "Pandas"
+        };
+
+        // Check answers
+        for (let question in answers) {
+            const userAnswer = document.querySelector(`input[name="${question}"]:checked`);
+            if (userAnswer && userAnswer.value === answers[question]) {
+                score++;
+            }
+        }
+
+        // Display results
+        document.getElementById('score').innerText = `You got ${score} out of ${totalQuestions} correct.`;
+        document.getElementById('result').style.display = 'block';
+    });
+</script>
+
+</body>
+</html>

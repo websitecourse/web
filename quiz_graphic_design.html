@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Graphic Design Essentials Quiz</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header>
+    <h1>Graphic Design Essentials Quiz</h1>
+</header>
+
+<div class="container">
+    <form id="quizForm">
+        <h2>Answer the following questions:</h2>
+
+        <div class="question">
+            <p>1. What is the principle of contrast in graphic design?</p>
+            <label><input type="radio" name="q1" value="Differentiating elements" required> Differentiating elements</label><br>
+            <label><input type="radio" name="q1" value="Aligning elements"> Aligning elements</label><br>
+        </div>
+
+        <div class="question">
+            <p>2. Which color scheme involves using colors that are next to each other on the color wheel?</p>
+            <label><input type="radio" name="q2" value="Analogous" required> Analogous</label><br>
+            <label><input type="radio" name="q2" value="Complementary"> Complementary</label><br>
+        </div>
+
+        <div class="question">
+            <p>3. What is the term for the space between lines of text?</p>
+            <label><input type="radio" name="q3" value="Leading" required> Leading</label><br>
+            <label><input type="radio" name="q3" value="Kerning"> Kerning</label><br>
+        </div>
+
+        <div class="question">
+            <p>4. Which of the following is NOT a font style?</p>
+            <label><input type="radio" name="q4" value="Italic" required> Italic</label><br>
+            <label><input type="radio" name="q4" value="Bold"> Bold</label><br>
+            <label><input type="radio" name="q4" value="Curve"> Curve</label><br>
+        </div>
+
+        <div class="question">
+            <p>5. What is the first step in the graphic design process?</p>
+            <label><input type="radio" name="q5" value="Research" required> Research</label><br>
+            <label><input type="radio" name="q5" value="Sketching"> Sketching</label><br>
+        </div>
+
+        <button type="submit">Submit Quiz</button>
+    </form>
+
+    <div id="result" style="display:none;">
+        <h2>Quiz Results</h2>
+        <p id="score"></p>
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2023 Online Courses. All rights reserved.</p>
+</footer>
+
+<script>
+    document.getElementById('quizForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent form submission
+
+        let score = 0;
+        const totalQuestions = 5;
+
+        // Correct answers for Graphic Design Essentials quiz
+        const answers = {
+            q1: "Differentiating elements",
+            q2: "Analogous",
+            q3: "Leading",
+            q4: "Curve", // Correct answer is the one that is NOT a font style
+            q5: "Research"
+        };
+
+        // Check answers
+        for (let question in answers) {
+            const userAnswer = document.querySelector(`input[name="${question}"]:checked`);
+            if (userAnswer && userAnswer.value === answers[question]) {
+                score++;
+            }
+        }
+
+        // Display results
+        document.getElementById('score').innerText = `You got ${score} out of ${totalQuestions} correct.`;
+        document.getElementById('result').style.display = 'block';
+    });
+</script>
+
+</body>
+</html>

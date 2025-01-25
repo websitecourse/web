@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Marketing Strategies Quiz</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header>
+    <h1>Digital Marketing Strategies Quiz</h1>
+</header>
+
+<div class="container">
+    <form id="quizForm">
+        <h2>Answer the following questions:</h2>
+
+        <div class="question">
+            <p>1. What is SEO?</p>
+            <label><input type="radio" name="q1" value="Search Engine Optimization" required> Search Engine Optimization</label><br>
+            <label><input type="radio" name="q1" value="Social Engagement Optimization"> Social Engagement Optimization</label><br>
+        </div>
+
+        <div class="question">
+            <p>2. What is the main goal of content marketing?</p>
+            <label><input type="radio" name="q2" value="To create brand awareness" required> To create brand awareness</label><br>
+            <label><input type="radio" name="q2" value="To increase traffic on the website"> To increase traffic on the website</label><br>
+            <label><input type="radio" name="q2" value="To engage and educate the audience"> To engage and educate the audience</label><br>
+        </div>
+
+        <div class="question">
+            <p>3. Which platform is primarily used for B2B marketing?</p>
+            <label><input type="radio" name="q3" value="LinkedIn" required> LinkedIn</label><br>
+            <label><input type="radio" name="q3" value="Instagram"> Instagram</label><br>
+            <label><input type="radio" name="q3" value="Twitter"> Twitter</label><br>
+        </div>
+
+        <div class="question">
+            <p>4. What does PPC stand for in digital marketing?</p>
+            <label><input type="radio" name="q4" value="Pay Per Click" required> Pay Per Click</label><br>
+            <label><input type="radio" name="q4" value="Pay Per Conversion"> Pay Per Conversion</label><br>
+        </div>
+
+        <div class="question">
+            <p>5. What is the purpose of a landing page?</p>
+            <label><input type="radio" name="q5" value="To capture leads" required> To capture leads</label><br>
+            <label><input type="radio" name="q5" value="To sell products directly"> To sell products directly</label><br>
+        </div>
+
+        <div class="question">
+            <p>6. Which of the following is NOT a social media platform?</p>
+            <label><input type="radio" name="q6" value="TikTok" required> TikTok</label><br>
+            <label><input type="radio" name="q6" value="Skype"> Skype</label><br>
+        </div>
+
+        <div class="question">
+            <p>7. What is the main purpose of email marketing?</p>
+            <label><input type="radio" name="q7" value="To communicate directly with customers" required> To communicate directly with customers</label><br>
+            <label><input type="radio" name="q7" value="To sell products to cold leads"> To sell products to cold leads</label><br>
+        </div>
+
+        <div class="question">
+            <p>8. What does ROI stand for in digital marketing?</p>
+            <label><input type="radio" name="q8" value="Return on Investment" required> Return on Investment</label><br>
+            <label><input type="radio" name="q8" value="Rate of Interest"> Rate of Interest</label><br>
+        </div>
+
+        <div class="question">
+            <p>9. Which of these is an example of inbound marketing?</p>
+            <label><input type="radio" name="q9" value="Blog posts and podcasts" required> Blog posts and podcasts</label><br>
+            <label><input type="radio" name="q9" value="Cold calls"> Cold calls</label><br>
+        </div>
+
+        <div class="question">
+            <p>10. What is Google Analytics used for?</p>
+            <label><input type="radio" name="q10" value="Tracking website traffic and user behavior" required> Tracking website traffic and user behavior</label><br>
+            <label><input type="radio" name="q10" value="Creating graphics for social media posts"> Creating graphics for social media posts</label><br>
+        </div>
+
+        <button type="submit">Submit Quiz</button>
+    </form>
+
+    <div id="result" style="display:none;">
+        <h2>Quiz Results</h2>
+        <p id="score"></p>
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2023 Online Courses. All rights reserved.</p>
+</footer>
+
+<script>
+    document.getElementById('quizForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent form submission
+
+        let score = 0;
+        const totalQuestions = 10;
+
+        // Correct answers for Digital Marketing Strategies quiz
+        const answers = {
+            q1: "Search Engine Optimization",
+            q2: "To engage and educate the audience",
+            q3: "LinkedIn",
+            q4: "Pay Per Click",
+            q5: "To capture leads",
+            q6: "Skype", // Correct answer is NOT a social media platform
+            q7: "To communicate directly with customers",
+            q8: "Return on Investment",
+            q9: "Blog posts and podcasts",
+            q10: "Tracking website traffic and user behavior"
+        };
+
+        // Check answers
+        for (let question in answers) {
+            const userAnswer = document.querySelector(`input[name="${question}"]:checked`);
+            if (userAnswer && userAnswer.value === answers[question]) {
+                score++;
+            }
+        }
+
+        // Display results
+        document.getElementById('score').innerText = `You got ${score} out of ${totalQuestions} correct.`;
+        document.getElementById('result').style.display = 'block';
+    });
+</script>
+
+</body>
+</html>

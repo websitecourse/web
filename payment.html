@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Payment Method</h1>
+    </header>
+
+    <div class="container">
+        <h2>Select Your Payment Method</h2>
+        <form id="paymentForm">
+            <label>
+                <input type="radio" name="payment" value="creditCard" required>
+                Credit Card
+            </label><br>
+            <label>
+                <input type="radio" name="payment" value="viva" required>
+                Viva
+            </label><br>
+            <button type="submit" class="form-btn">Proceed to Payment</button>
+        </form>
+
+        <!-- Start Quiz Button (initially hidden) -->
+        <div id="startQuiz" style="display:none; margin-top: 20px;">
+            <h2>Payment Successful!</h2>
+            <a id="quizLink" href="#" class="btn" onclick="startQuiz()">Start Quiz</a>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2023 Online Courses. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // This function ensures the quiz starts
+        function startQuiz() {
+            // Get the course from the URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const course = urlParams.get('course');
+            let quizUrl = '';
+
+            // Determine the quiz URL based on the course
+            switch(course) {
+                case 'web-development':
+                    quizUrl = 'quiz_web_development.html';
+                    break;
+                case 'digital-marketing':
+                    quizUrl = 'quiz_digital_marketing.html';
+                    break;
+                case 'data-science':
+                    quizUrl = 'quiz_data_science.html';
+                    break;
+                case 'graphic-design':
+                    quizUrl = 'quiz_graphic_design.html';
+                    break;
+                default:
+                    quizUrl = '#'; // Default, in case no course is selected
+            }
+
+            // Redirect to the quiz page
+            window.location.href = quizUrl;
+        }
+
+        document.getElementById('paymentForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent form submission
+
+            // Simulate payment processing (you can add actual payment logic here)
+            setTimeout(() => {
+                // Get the course from the URL
+                const urlParams = new URLSearchParams(window.location.search);
+                const course = urlParams.get('course');
+                let courseName = '';
+
+                // Determine the course name based on the selected course
+                switch(course) {
+                    case 'web-development':
+                        courseName = 'Web Development Basics';
+                        break;
+                    case 'digital-marketing':
+                        courseName = 'Digital Marketing Strategies';
+                        break;
+                    case 'data-science':
+                        courseName = 'Data Science for Beginners';
+                        break;
+                    case 'graphic-design':
+                        courseName = 'Graphic Design Essentials';
+                        break;
+                    default:
+                        courseName = 'Unknown Course';
+                }
+
+                // Update the Start Quiz button text
+                document.getElementById('quizLink').innerText = `Start ${courseName} Quiz`;
+                document.getElementById('startQuiz').style.display = 'block';
+            }, 1000); // Simulate a delay for payment processing
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Development Basics Quiz</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header>
+    <h1>Web Development Basics Quiz</h1>
+</header>
+
+<div class="container">
+    <form id="quizForm">
+        <h2>Answer the following questions:</h2>
+
+        <div class="question">
+            <p>1. What does HTML stand for?</p>
+            <label><input type="radio" name="q1" value="Hyper Text Markup Language" required> Hyper Text Markup Language</label><br>
+            <label><input type="radio" name="q1" value="High Text Markup Language"> High Text Markup Language</label><br>
+        </div>
+
+        <div class="question">
+            <p>2. Which of the following is a CSS property?</p>
+            <label><input type="radio" name="q2" value="color" required> color</label><br>
+            <label><input type="radio" name="q2" value="font-style"> font-style</label><br>
+            <label><input type="radio" name="q2" value="both"> both</label><br>
+        </div>
+
+        <div class="question">
+            <p>3. What does CSS stand for?</p>
+            <label><input type="radio" name="q3" value="Cascading Style Sheets" required> Cascading Style Sheets</label><br>
+            <label><input type="radio" name="q3" value="Colorful Style Sheets"> Colorful Style Sheets</label><br>
+        </div>
+
+        <div class="question">
+            <p>4. Which HTML tag is used to define an internal style sheet?</p>
+            <label><input type="radio" name="q4" value="&lt;style&gt;" required> &lt;style&gt;</label><br>
+            <label><input type="radio" name="q4" value="&lt;css&gt;"> &lt;css&gt;</label><br>
+        </div>
+
+        <div class="question">
+            <p>5. Which property is used to change the background color?</p>
+            <label><input type="radio" name="q5" value="background-color" required> background-color</label><br>
+            <label><input type="radio" name="q5" value="color"> color</label><br>
+        </div>
+
+        <div class="question">
+            <p>6. What is the correct HTML element for inserting a line break?</p>
+            <label><input type="radio" name="q6" value="&lt;br&gt;" required> &lt;br&gt;</label><br>
+            <label><input type="radio" name="q6" value="&lt;break&gt;"> &lt;break&gt;</label><br>
+        </div>
+
+        <div class="question">
+            <p>7. Which HTML attribute is used to define inline styles?</p>
+            <label><input type="radio" name="q7" value="style" required> style</label><br>
+            <label><input type="radio" name="q7" value="class"> class</label><br>
+        </div>
+
+        <div class="question">
+            <p>8. How do you create a list in HTML?</p>
+            <label><input type="radio" name="q8" value="&lt;ul&gt;" required> &lt;ul&gt;</label><br>
+            <label><input type="radio" name="q8" value="&lt;list&gt;"> &lt;list&gt;</label><br>
+        </div>
+
+        <div class="question">
+            <p>9. Which HTML element is used to specify a footer for a document or section?</p>
+            <label><input type="radio" name="q9" value="&lt;footer&gt;" required> &lt;footer&gt;</label><br>
+            <label><input type="radio" name="q9" value="&lt;bottom&gt;"> &lt;bottom&gt;</label><br>
+        </div>
+
+        <div class="question">
+            <p>10. What does JavaScript allow you to do?</p>
+            <label><input type="radio" name="q10" value="Create dynamic content" required> Create dynamic content</label><br>
+            <label><input type="radio" name="q10" value="Style web pages"> Style web pages</label><br>
+        </div>
+
+        <button type="submit">Submit Quiz</button>
+    </form>
+
+    <div id="result" style="display:none;">
+        <h2>Quiz Results</h2>
+        <p id="score"></p>
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2023 Online Courses. All rights reserved.</p>
+</footer>
+
+<script>
+    document.getElementById('quizForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent form submission
+
+        let score = 0;
+        const totalQuestions = 10;
+
+        // Correct answers
+        const answers = {
+            q1: "Hyper Text Markup Language",
+            q2: "color",
+            q3: "Cascading Style Sheets",
+            q4: "<style>",
+            q5: "background-color",
+            q6: "<br>",
+            q7: "style",
+            q8: "<ul>",
+            q9: "<footer>",
+            q10: "Create dynamic content"
+        };
+
+        // Check answers
+        for (let question in answers) {
+            const userAnswer = document.querySelector(`input[name="${question}"]:checked`);
+            if (userAnswer && userAnswer.value === answers[question]) {
+                score++;
+            }
+        }
+
+        // Display results
+        document.getElementById('score').innerText = `You got ${score} out of ${totalQuestions} correct.`;
+        document.getElementById('result').style.display = 'block';
+    });
+</script>
+
+</body>
+</html>
